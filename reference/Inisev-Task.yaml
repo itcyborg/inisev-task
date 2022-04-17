@@ -3,6 +3,7 @@ info:
   title: 'Inisev Task '
   version: '1.0'
   summary: Inisev assesment task
+  description: ''
 servers:
   - url: 'http://localhost:3000'
 paths:
