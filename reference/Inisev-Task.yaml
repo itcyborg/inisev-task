@@ -9,10 +9,10 @@ paths:
   /api/post:
     get:
       summary: List Posts
-      tags:
-        - Subscriptions
       responses: {}
       operationId: get-api-post
+      tags:
+        - Post Management
     post:
       summary: Create Post
       tags:
@@ -595,5 +595,635 @@ paths:
                 example-1:
                   subscription_user_id: '2'
                   website_id: '3'
+  '/api/website/{website_id}':
+    parameters:
+      - schema:
+          type: string
+        name: website_id
+        in: path
+        required: true
+        description: Website id
+    put:
+      summary: Update website
+      tags:
+        - Website
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      uuid:
+                        type: string
+                        minLength: 1
+                      name:
+                        type: string
+                        minLength: 1
+                      url:
+                        type: string
+                        minLength: 1
+                      status:
+                        type: number
+                      created_at:
+                        type: string
+                        minLength: 1
+                      updated_at:
+                        type: string
+                        minLength: 1
+                      deleted_at: {}
+                    required:
+                      - id
+                      - uuid
+                      - name
+                      - url
+                      - status
+                      - created_at
+                      - updated_at
+                  status:
+                    type: string
+                    minLength: 1
+                  message:
+                    type: string
+                    minLength: 1
+                required:
+                  - data
+                  - status
+                  - message
+                x-examples:
+                  example-1:
+                    data:
+                      id: 3
+                      uuid: bf6ca748-c26a-4549-a2d9-f8079df9c05f
+                      name: Website one
+                      url: 'http://website.com'
+                      status: 0
+                      created_at: '2022-04-17T13:35:41.000000Z'
+                      updated_at: '2022-04-17T13:35:41.000000Z'
+                      deleted_at: null
+                    status: success
+                    message: Website updated successfully
+      operationId: put-api-website-website_id
+      description: ''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                url:
+                  type: string
+                  minLength: 1
+              required:
+                - name
+                - url
+              x-examples:
+                example-1:
+                  name: Website one
+                  url: 'http://website.com'
+    patch:
+      summary: Update website
+      tags:
+        - Website
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      uuid:
+                        type: string
+                        minLength: 1
+                      name:
+                        type: string
+                        minLength: 1
+                      url:
+                        type: string
+                        minLength: 1
+                      status:
+                        type: number
+                      created_at:
+                        type: string
+                        minLength: 1
+                      updated_at:
+                        type: string
+                        minLength: 1
+                      deleted_at: {}
+                    required:
+                      - id
+                      - uuid
+                      - name
+                      - url
+                      - status
+                      - created_at
+                      - updated_at
+                  status:
+                    type: string
+                    minLength: 1
+                  message:
+                    type: string
+                    minLength: 1
+                required:
+                  - data
+                  - status
+                  - message
+                x-examples:
+                  example-1:
+                    data:
+                      id: 3
+                      uuid: bf6ca748-c26a-4549-a2d9-f8079df9c05f
+                      name: Website one
+                      url: 'http://website.com'
+                      status: 0
+                      created_at: '2022-04-17T13:35:41.000000Z'
+                      updated_at: '2022-04-17T13:35:41.000000Z'
+                      deleted_at: null
+                    status: success
+                    message: Website updated successfully
+      operationId: patch-api-website-website_id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                url:
+                  type: string
+                  minLength: 1
+              required:
+                - name
+                - url
+              x-examples:
+                example-1:
+                  name: Website one
+                  url: 'http://website.com'
+    delete:
+      summary: Delete website
+      tags:
+        - Website
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      required: []
+                      properties: {}
+                  status:
+                    type: string
+                    minLength: 1
+                  message:
+                    type: string
+                    minLength: 1
+                required:
+                  - data
+                  - status
+                  - message
+                x-examples:
+                  example-1:
+                    data: []
+                    status: success
+                    message: Website deleted successfully
+      operationId: delete-api-website-website_id
+  '/api/post/{post_id}':
+    parameters:
+      - schema:
+          type: string
+        name: post_id
+        in: path
+        required: true
+    put:
+      summary: Update post
+      tags:
+        - Post Management
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      uuid:
+                        type: string
+                        minLength: 1
+                      title:
+                        type: string
+                        minLength: 1
+                      content:
+                        type: string
+                        minLength: 1
+                      slug:
+                        type: string
+                        minLength: 1
+                      website_id:
+                        type: number
+                      created_at:
+                        type: string
+                        minLength: 1
+                      updated_at:
+                        type: string
+                        minLength: 1
+                      deleted_at: {}
+                    required:
+                      - id
+                      - uuid
+                      - title
+                      - content
+                      - slug
+                      - website_id
+                      - created_at
+                      - updated_at
+                  status:
+                    type: string
+                    minLength: 1
+                  message:
+                    type: string
+                    minLength: 1
+                required:
+                  - data
+                  - status
+                  - message
+                x-examples:
+                  example-1:
+                    data:
+                      id: 1
+                      uuid: e4b361c9-bbe0-4a2b-b59f-c33379985af9
+                      title: Awesome postasd
+                      content: Test content
+                      slug: example-post-282
+                      website_id: 3
+                      created_at: '2022-04-17T15:15:23.000000Z'
+                      updated_at: '2022-04-17T16:09:38.000000Z'
+                      deleted_at: null
+                    status: success
+                    message: Post updated successfully
+      operationId: put-api-post-post_id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                title:
+                  type: string
+                  minLength: 1
+                content:
+                  type: string
+                  minLength: 1
+                slug:
+                  type: string
+                  minLength: 1
+              required:
+                - title
+                - content
+                - slug
+              x-examples:
+                example-1:
+                  title: Awesome postasd
+                  content: Test content
+                  slug: example-post-28
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+        description: ''
+    delete:
+      summary: Delete post
+      tags:
+        - Post Management
+      responses: {}
+      operationId: delete-api-post-post_id
+    patch:
+      summary: Update post
+      tags:
+        - Post Management
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      uuid:
+                        type: string
+                        minLength: 1
+                      title:
+                        type: string
+                        minLength: 1
+                      content:
+                        type: string
+                        minLength: 1
+                      slug:
+                        type: string
+                        minLength: 1
+                      website_id:
+                        type: number
+                      created_at:
+                        type: string
+                        minLength: 1
+                      updated_at:
+                        type: string
+                        minLength: 1
+                      deleted_at: {}
+                    required:
+                      - id
+                      - uuid
+                      - title
+                      - content
+                      - slug
+                      - website_id
+                      - created_at
+                      - updated_at
+                  status:
+                    type: string
+                    minLength: 1
+                  message:
+                    type: string
+                    minLength: 1
+                required:
+                  - data
+                  - status
+                  - message
+                x-examples:
+                  example-1:
+                    data:
+                      id: 1
+                      uuid: e4b361c9-bbe0-4a2b-b59f-c33379985af9
+                      title: Awesome postasd
+                      content: Test content
+                      slug: example-post-282
+                      website_id: 3
+                      created_at: '2022-04-17T15:15:23.000000Z'
+                      updated_at: '2022-04-17T16:09:38.000000Z'
+                      deleted_at: null
+                    status: success
+                    message: Post updated successfully
+      operationId: patch-api-post-post_id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                title:
+                  type: string
+                  minLength: 1
+                content:
+                  type: string
+                  minLength: 1
+                website_id:
+                  type: number
+                slug:
+                  type: string
+                  minLength: 1
+              required:
+                - title
+                - content
+                - website_id
+                - slug
+              x-examples:
+                example-1:
+                  title: Awesome postasd
+                  content: Test content
+                  website_id: 3
+                  slug: example-post-282
+  '/api/subscription-users/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    put:
+      summary: Update user
+      tags:
+        - Subscription Users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      uuid:
+                        type: string
+                        minLength: 1
+                      name:
+                        type: string
+                        minLength: 1
+                      email:
+                        type: string
+                        minLength: 1
+                      active:
+                        type: number
+                      created_at:
+                        type: string
+                        minLength: 1
+                      updated_at:
+                        type: string
+                        minLength: 1
+                      deleted_at: {}
+                    required:
+                      - id
+                      - uuid
+                      - name
+                      - email
+                      - active
+                      - created_at
+                      - updated_at
+                  status:
+                    type: string
+                    minLength: 1
+                  message:
+                    type: string
+                    minLength: 1
+                required:
+                  - data
+                  - status
+                  - message
+                x-examples:
+                  example-1:
+                    data:
+                      id: 2
+                      uuid: 4c7f72fd-e6c9-4fb6-931c-c1c10bee0e45
+                      name: isaac
+                      email: isaac@example-site.com
+                      active: 1
+                      created_at: '2022-04-17T14:26:30.000000Z'
+                      updated_at: '2022-04-17T16:12:24.000000Z'
+                      deleted_at: null
+                    status: success
+                    message: Subscription User updated successfully
+      operationId: put-api-subscription-users-id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                email:
+                  type: string
+                  minLength: 1
+              required:
+                - name
+                - email
+              x-examples:
+                example-1:
+                  name: isaac
+                  email: isaac@example-site.com
+    patch:
+      summary: Update user
+      tags:
+        - Subscription Users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      uuid:
+                        type: string
+                        minLength: 1
+                      name:
+                        type: string
+                        minLength: 1
+                      email:
+                        type: string
+                        minLength: 1
+                      active:
+                        type: number
+                      created_at:
+                        type: string
+                        minLength: 1
+                      updated_at:
+                        type: string
+                        minLength: 1
+                      deleted_at: {}
+                    required:
+                      - id
+                      - uuid
+                      - name
+                      - email
+                      - active
+                      - created_at
+                      - updated_at
+                  status:
+                    type: string
+                    minLength: 1
+                  message:
+                    type: string
+                    minLength: 1
+                required:
+                  - data
+                  - status
+                  - message
+                x-examples:
+                  example-1:
+                    data:
+                      id: 2
+                      uuid: 4c7f72fd-e6c9-4fb6-931c-c1c10bee0e45
+                      name: isaac
+                      email: isaac@example-site.com
+                      active: 1
+                      created_at: '2022-04-17T14:26:30.000000Z'
+                      updated_at: '2022-04-17T16:12:24.000000Z'
+                      deleted_at: null
+                    status: success
+                    message: Subscription User updated successfully
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+      operationId: patch-api-subscription-users-id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                email:
+                  type: string
+                  minLength: 1
+              required:
+                - name
+                - email
+              x-examples:
+                example-1:
+                  name: isaac
+                  email: isaac@example-site.com
+    delete:
+      summary: Delete user
+      tags:
+        - Subscription Users
+      responses: {}
+      operationId: delete-api-subscription-users-id
 components:
   schemas: {}
