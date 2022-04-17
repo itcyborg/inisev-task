@@ -15,8 +15,6 @@ paths:
         - Post Management
     post:
       summary: Create Post
-      tags:
-        - Subscriptions
       responses:
         '200':
           description: OK
@@ -278,6 +276,8 @@ paths:
                   content: Test content
                   website_id: 3
                   slug: example-post-27
+      tags:
+        - Post Management
   /api/website:
     get:
       summary: List websites
